@@ -11,6 +11,11 @@ sqlite3* temp;
 bool createTablePHI3(sqlite3* DB);
 bool closeDB(sqlite3* DB);
 bool commitPHI(personalInfo &temp);
+bool createTableRepresentative(sqlite3* DB);
+bool commitRepresentativeModel(Representative rep);
+bool joinTables();
+
+
 
 //initate the database connection/create the data base
 bool DBFunction(){
@@ -24,7 +29,9 @@ bool DBFunction(){
     }
     else {
         cout << "Opened Database Successfully!" << endl;
-        bool tableStats = createTablePHI3(DB);
+        bool tableStatsPHI = createTablePHI3(DB);
+        bool tableStatsRep = createTableRepresentative(DB);
+        bool tablejoin = joinTables();
         temp = DB; 
        
 
@@ -130,7 +137,25 @@ bool commitRepresentativeModel(Representative rep){
     return true;
 }
 
-
+//join the two tables with the PHI table being able to access the Representative table but not the other way around
+bool joinTables(){
+    string sql = "SELECT * FROM PHI JOIN Representative ON PHI.ID = Representative.ID";
+    sqlite3_stmt* stmt; 
+    int plsdnterror = sqlite3_prepare(temp, sql.c_str(), -1, &stmt, NULL); 
+    if (plsdnterror != SQLITE_OK) {
+        cerr << "Error W/ Table PHI" << endl; 
+        sqlite3_close(temp); 
+        return false;
+    }
+    plsdnterror = sqlite3_step(stmt); 
+    if (plsdnterror != SQLITE_DONE) {
+        cerr << "Error W/ Table PHI" << endl; 
+        sqlite3_close(temp); 
+        return false;
+    }
+    sqlite3_finalize(stmt); 
+    return true;
+}
 
 
 
