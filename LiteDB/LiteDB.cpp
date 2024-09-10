@@ -31,8 +31,9 @@ bool DBFunction(){
         cout << "Opened Database Successfully!" << endl;
         bool tableStatsPHI = createTablePHI3(DB);
         bool tableStatsRep = createTableRepresentative(DB);
-        bool tablejoin = joinTables();
         temp = DB; 
+        bool tablejoin = joinTables();
+        
        
 
     }
