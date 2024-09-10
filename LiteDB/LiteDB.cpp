@@ -12,7 +12,7 @@ bool createTablePHI3(sqlite3* DB);
 bool closeDB(sqlite3* DB);
 bool commitPHI(personalInfo &temp);
 
-
+//initate the database connection/create the data base
 bool DBFunction(){
     sqlite3* DB; // Declare a pointer to a SQLite database
     int exit = sqlite3_open("example.db", &DB); // Open a database connection
@@ -34,7 +34,7 @@ bool DBFunction(){
     
 }
 
-//add to db
+//create the tables in the database
 
 bool createTablePHI3(sqlite3* DB){
     string sql = "CREATE TABLE PHI("
@@ -61,8 +61,6 @@ bool closeDB(sqlite3* DB){
     return true;
 }
 
-//09/09/2024
-
 
 bool createTableRepresentative(sqlite3* DB){
     string sql = "CREATE TABLE Representative("
@@ -83,6 +81,8 @@ bool createTableRepresentative(sqlite3* DB){
     return true;
 }
 
+
+//commit the personalInfo object to the database as well as the Representative object
 bool commitPHI(personalInfo &PHI){
     string sql = "INSERT INTO PHI (ID, NAME, ADDRESS, INCLUDEOFFICES, PHONENUMBER) VALUES (?,?,?,?,?)";
     sqlite3_stmt* stmt; 
@@ -129,6 +129,8 @@ bool commitRepresentativeModel(Representative rep){
     sqlite3_finalize(stmt); 
     return true;
 }
+
+
 
 
 
