@@ -140,9 +140,9 @@ bool commitRepresentativeModel(Representative rep){
 
 //join the two tables with the PHI table being able to access the Representative table but not the other way around
 bool joinTables(){
-    string sql = "SELECT * FROM PHI JOIN Representative ON PHI.ID = Representative.ID";
+    string sqlCMD = "SELECT * FROM PHI JOIN Representative ON PHI.ID = Representative.ID";
     sqlite3_stmt* stmt; 
-    int plsdnterror = sqlite3_prepare(temp, sql.c_str(), -1, &stmt, NULL); 
+    int plsdnterror = sqlite3_prepare(temp, sqlCMD.c_str(), -1, &stmt, NULL); 
     if (plsdnterror != SQLITE_OK) {
         cerr << "Error W/ Table PHI" << endl; 
         sqlite3_close(temp); 
