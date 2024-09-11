@@ -12,6 +12,7 @@ using namespace std;
 #include "../Model/PHIModel.h"
 #include "../LiteDB/LiteDB.h"
 #include "../src/main.h"
+#include "intake.cpp"
 
 bool setPointertoCSV();
 
