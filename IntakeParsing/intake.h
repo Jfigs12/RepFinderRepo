@@ -13,7 +13,7 @@ using namespace std;
 #include "../LiteDB/LiteDB.h"
 #include "../src/main.h"
 
-bool intakeCSV(string fileName);
+bool setPointertoCSV();
 
 
 
