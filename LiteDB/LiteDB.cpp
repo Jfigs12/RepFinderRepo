@@ -20,7 +20,7 @@ bool joinTables();
 //initate the database connection/create the data base
 bool DBFunction(){
     sqlite3* DB; // Declare a pointer to a SQLite database
-    int exit = sqlite3_open("example.db", &DB); // Open a database connection
+    int exit = sqlite3_open("test.db", &DB); // Open a database connection
 
     if (exit) {
         cerr << "Error open DB " << sqlite3_errmsg(DB) << endl; 
