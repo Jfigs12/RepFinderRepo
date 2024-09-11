@@ -14,7 +14,7 @@ bool closeDB(sqlite3 *db);
 bool createTablePHI3(sqlite3 *db);
 bool commitPHI(personalInfo &temp);
 bool createTableRepresentative(sqlite3* DB);
-bool commitRepresentativeModel(Representative &rep, int personID);
+bool commitRepresentativeModel(Representative rep, int personID);
 
 
 
