@@ -115,7 +115,7 @@ bool commitPHI(personalInfo &PHI){
     return true;
 }
 
-bool commitRepresentativeModel(Representative rep){
+bool commitRepresentativeModel(Representative rep, int personID){
     string sql = "INSERT INTO Representative (ID, NAME, ADDRESS, PHONENUMBER) VALUES (?,?,?,?)";
     sqlite3_stmt* stmt; 
     int plsdnterror = sqlite3_prepare(temp, sql.c_str(), -1, &stmt, NULL); 
@@ -125,7 +125,8 @@ bool commitRepresentativeModel(Representative rep){
         return false;
     }
     sqlite3_bind_int(stmt, 1, rep.getDistrictID());
-    sqlite3_bind_text(stmt, 2, rep.getRepresentativeName().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, rep.getRepresentativeName().c_str(), -1, SQLITE_STATIC); // Line 97: Bind the representative name to the prepared statement
+    sqlite3_bind_int(stmt, 3, personID);
     sqlite3_bind_text(stmt, 3, rep.getParty().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_int(stmt, 4, rep.getDOI());
     plsdnterror = sqlite3_step(stmt); 
