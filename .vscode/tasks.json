@@ -9,6 +9,7 @@
                 "-g",
                 "${file}",
                 "/Users/jasonfigueiredo/Desktop/RepFinderRepo/LiteDB/LiteDB.cpp",
+                "/Users/jasonfigueiredo/Desktop/RepFinderRepo/LiteDB/AppendtoDB.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-lsqlite3"
