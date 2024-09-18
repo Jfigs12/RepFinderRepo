@@ -73,7 +73,7 @@ bool closeDB(sqlite3* DB){
 bool createTableRepresentative(sqlite3* DB){
     string sql = "CREATE TABLE Representative("
                  "ID INT PRIMARY KEY     NOT NULL,"
-                 "NAME           TEXT    NOT NULL,"
+                 "NAME           varchar(200)    NOT NULL,"
                  "ADDRESS        TEXT    NOT NULL,"
                  "PHONENUMBER    INT     NOT NULL);";
     int plsdnterror = 0;
