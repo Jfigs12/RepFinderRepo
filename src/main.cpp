@@ -36,8 +36,10 @@ int main(){
     bool test = commitPHI(p1);
     printf("test2");
     commitReptoDB(3, rep1);
-    
+
     return 0;
+    
+
     
     
 }
